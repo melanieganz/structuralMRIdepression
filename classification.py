@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import StratifiedKFold
@@ -157,8 +156,8 @@ ax.plot(mean_fpr, mean_fpr, 'r--', label='Identity')
 
 # Plot layout
 ax.set(xlim=[-0.05, 1.05], ylim=[-0.05, 1.05])
-ax.set_xlabel('False Positive Rate', fontsize=16)
-ax.set_ylabel('True Positive Rate', fontsize=16)
+ax.set_xlabel('1-Specificity', fontsize=16)
+ax.set_ylabel('Sensitivity', fontsize=16)
 ax.legend(loc='lower right')    
 ax.set_aspect('equal', adjustable='box')
 plt.tight_layout()

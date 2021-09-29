@@ -112,11 +112,12 @@ def load_data(
     X['ICV'] = np.float64(df['ICV'])  # somehow, casting is necessary to avoid NaN (???)
 
     # Binary (threshold) encode the "change" column so
-    # that 0 equals a change less than 50% and 1 equals a change larger than 50%
+    # that 1 equals a change less than 50% and 0 equals a change larger than 50%
     threshold = -50
-    y = df['hamd_change_week8'].gt(threshold) # .astype(int)
+    y = df['hamd_change_week8'].le(threshold) # .astype(int)
     y = y.map({True : 0, False : 1})
             
+    # Save data for statistical analysis
     if out_csv is not None:
         df = pd.concat([X, y], axis=1)
         df.columns = list(X.columns) + ['group']
